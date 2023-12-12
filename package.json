@@ -1,6 +1,6 @@
 {
   "name": "wasm2ts",
-  "version": "1.0.0",
+  "version": "1.0.2",
   "description": "Compile WebAssembly .wasm files to a TypeScript module.",
   "main": "./bin/index.js",
   "scripts": {
@@ -8,9 +8,18 @@
     "build": "tsc"
   },
   "bin": "./bin/index.js",
-  "keywords": [],
-  "author": "",
-  "license": "ISC",
+  "repository": {
+    "type": "git",
+    "url": "git://github.com/Howardzhangdqs/wasm2ts"
+  },
+  "homepage": "https://github.com/Howardzhangdqs/wasm2ts",
+  "keywords": [
+    "WebAssembly",
+    "wasm",
+    "typescript"
+  ],
+  "author": "HowardZhangdqs",
+  "license": "MIT",
   "dependencies": {
     "@types/node": "^20.10.2",
     "argparse": "^2.0.1",

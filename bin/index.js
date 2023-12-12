@@ -28,7 +28,7 @@ const args = parser.parse_args();
     const path = require("path");
     const betterWasm2js = require("../dist/lib/binding.js");
 
-    if (path.extname(args.input) !== "wasm") {
+    if (path.extname(args.input) !== ".wasm") {
         throw new Error("Input file must be a wasm file");
     };
 
@@ -37,9 +37,9 @@ const args = parser.parse_args();
     const input = fs.readFileSync(absolutePath);
     const output = await betterWasm2js.default._(input);
 
-    console.log(output);
-
     const outputPath = path.resolve(args.output || args.input.replace(/\.wasm$/, ".ts"));
+
+    console.log(`Output file: ${outputPath}\nFile size: ${output.length} bytes`);
 
     fs.writeFileSync(outputPath, output);
 

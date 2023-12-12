@@ -1,4 +1,4 @@
-
+/** WASM_COMPRESS **/
 function streamToBuffer(stream: ReadableStream): Promise<Buffer> {
     return new Promise((resolve, reject) => {
         const reader = stream.getReader();
@@ -37,7 +37,7 @@ async function GzipDecompresser(content: string) {
     return decoder.decode(uint8array);
 };
 
-// Base64 2 Uint8Array
+/** WASM_COMPRESS **/// Base64 2 Uint8Array
 const Base2Uint8 = (base64: string) => {
     const binstr = atob(base64);
     const len = binstr.length;
@@ -48,20 +48,20 @@ const Base2Uint8 = (base64: string) => {
     return bytes;
 };
 
+type ExportType = { /** WASM_EXPORT_TYPE **/ /** WASM_EXPORT_TYPE **/ };
 
-export default async (importObject: WebAssembly.Imports): Promise<{
-    /** WASM_EXPORT_TYPE **/ /** WASM_EXPORT_TYPE **/
-}> => {
+export default async (importObject: WebAssembly.Imports): Promise<ExportType> => {
 
     let wasmstr = "/** WASM_STRING **/ /** WASM_STRING **/";
+    /** WASM_COMPRESS **/
     const COMPRESS_TIMES = /** COMPRESS_TIMES **/ 0 /** COMPRESS_TIMES **/;
     for (let i = COMPRESS_TIMES; i; i--) wasmstr = await GzipDecompresser(wasmstr);
-
+    /** WASM_COMPRESS **/
     const wasm = Base2Uint8(wasmstr);
 
     const wasmModule = new WebAssembly.Module(wasm);
     const wasmInstance = new WebAssembly.Instance(wasmModule, importObject);
-    const wasmExports = wasmInstance.exports;
+    const wasmExports = wasmInstance.exports as ExportType;
 
     return wasmExports;
 };

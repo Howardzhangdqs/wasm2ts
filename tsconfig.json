@@ -9,5 +9,10 @@
     "strict": false,
     "skipLibCheck": true,
     "declaration": true,
-  }
+  },
+  "exclude": [
+    "./test/**/*",
+    "./bin/**/*",
+    "./dist/**/*"
+  ]
 }

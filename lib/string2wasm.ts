@@ -4,7 +4,7 @@
  * @param {string} wasmString
  * @returns {WebAssembly.Instance}
  */
-export default (wasmString: string, importObject: WebAssembly.Imports = {}) => {
+export default (wasmString: string, importObject: WebAssembly.Imports = {}): WebAssembly.Instance => {
     const wasm = Buffer.from(wasmString, 'base64');
     const wasmModule = new WebAssembly.Module(wasm);
     const wasmInstance = new WebAssembly.Instance(wasmModule, importObject);

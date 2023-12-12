@@ -1,4 +1,3 @@
-// 检查压缩几次效率最大
 import { GzipCompresser, GzipDecompresser } from './compresser';
 
 export const compress = async (input: string) => {
