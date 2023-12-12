@@ -41,7 +41,9 @@ Wat Code:
 ```
 
 ```sh
-wasm2ts -i example.wasm -o example.ts
+$ wasm2ts -i fib.wasm
+Output file: D:\path\to\ts\fib.ts
+File size: 1062 bytes
 ```
 
 Generated TypeScript Code:

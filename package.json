@@ -4,7 +4,7 @@
   "description": "Compile WebAssembly .wasm files to a TypeScript module.",
   "main": "./bin/index.js",
   "scripts": {
-    "test": "ts-node ./test/index.ts",
+    "test": "vitest --ui",
     "build": "tsc"
   },
   "bin": "./bin/index.js",
@@ -21,11 +21,14 @@
   "author": "HowardZhangdqs",
   "license": "MIT",
   "dependencies": {
+    "@types/argparse": "^2.0.14",
     "@types/node": "^20.10.2",
     "argparse": "^2.0.1",
     "typescript": "^5.3.2"
   },
   "devDependencies": {
-    "ts-node": "^10.9.1"
+    "@vitest/ui": "^1.0.4",
+    "ts-node": "^10.9.1",
+    "vitest": "^1.0.4"
   }
 }
