@@ -1,6 +1,6 @@
 {
   "name": "wasm2ts",
-  "version": "1.0.2",
+  "version": "1.0.3",
   "description": "Compile WebAssembly .wasm files to a TypeScript module.",
   "main": "./bin/index.js",
   "scripts": {
@@ -21,14 +21,15 @@
   "author": "HowardZhangdqs",
   "license": "MIT",
   "dependencies": {
-    "@types/argparse": "^2.0.14",
-    "@types/node": "^20.10.2",
     "argparse": "^2.0.1",
-    "typescript": "^5.3.2"
+    "chalk": "4.1.2"
   },
   "devDependencies": {
+    "@types/argparse": "^2.0.14",
+    "@types/node": "^20.10.2",
     "@vitest/ui": "^1.0.4",
     "ts-node": "^10.9.1",
-    "vitest": "^1.0.4"
+    "vitest": "^1.0.4",
+    "typescript": "^5.3.2"
   }
 }

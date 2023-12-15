@@ -1,6 +1,7 @@
 #!/usr/bin/env node
 
 const { ArgumentParser } = require("argparse");
+const chalk = require("chalk");
 
 const parser = new ArgumentParser({
     description: "Bundle Wasm to TS (wasm2ts)",
@@ -39,7 +40,8 @@ const args = parser.parse_args();
 
     const outputPath = path.resolve(args.output || args.input.replace(/\.wasm$/, ".ts"));
 
-    console.log(`Output file: ${outputPath}\nFile size: ${output.length} bytes`);
+    console.log(`Output file: ` + chalk.underline.white(`${outputPath}`));
+    console.log(`File size: ` + chalk.white(`${output.length} bytes`));
 
     fs.writeFileSync(outputPath, output);
 

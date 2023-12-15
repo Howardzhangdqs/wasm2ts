@@ -14,13 +14,19 @@ export type wasmOutputType = {
         memory: string[];
         table: string[];
         global: string[];
-    },
+    } | false,
 };
 
 const buffer2wasm = async (wasmBuffer: Buffer): Promise<wasmOutputType> => {
     const wasmString = buffer2string(wasmBuffer);
     const compressedWasm = await compresser.compress(wasmString);
+    
     const wasmInstance = string2wasm(wasmString);
+    if (wasmInstance === false) return {
+        wasm: compressedWasm,
+        entry: false,
+    }
+
     const wasmEntry = checkWasmEntry(wasmInstance);
     return {
         wasm: compressedWasm,

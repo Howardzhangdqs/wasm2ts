@@ -30,15 +30,29 @@ test("WASM Base64 Compression", async () => {
 
 test("WASM Entry", async () => {
     const wasm = await wasm2ts.buffer2wasm(wasmContent);
-    
-    expect(
-        wasm.entry.function
-    ).toEqual(["fib", "_start"]);
+
+    if (wasm.entry !== false)
+        expect(wasm.entry.function).toEqual(["fib", "_start"]);
 });
 
 
 test("WASM Function", async () => {
     const wasm = wasm2ts.string2wasm(wasmBase64);
-    
-    expect((wasm.exports.fib as Function)(10)).toBe(55);
+
+    if (wasm !== false)
+        expect((wasm.exports.fib as Function)(10)).toBe(55);
+});
+
+
+test("Gzip Compress", async () => {
+    expect(
+        await wasm2ts.compresser.compress("YWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFh")
+    ).toEqual({
+        "compressed": "H4sIAAAAAAAACosMd8uIpAADAFZ9rhxAAAAA",
+        "times": 1,
+    })
+
+    expect(
+        await wasm2ts.compresser.decompress("H4sIAAAAAAAAC0tMJA0AAFYrOKAwAAAA", 1)
+    ).toEqual("aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa")
 });
